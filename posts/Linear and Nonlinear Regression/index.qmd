@@ -1,0 +1,9 @@
+---
+title: "Linear and Nonlinear Regression"
+author: "Hayden Brundage"
+date: ""
+categories: [code, machine learning, analysis]
+image: ""
+---
+
+This post covers the concepts of linear and nonlinear regression.

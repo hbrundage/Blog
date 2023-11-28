@@ -1,0 +1,8 @@
+---
+title: "Clustering"
+author: "Hayden Brundage"
+date: "2023-11-24"
+categories: [news]
+---
+
+This post covers the concept of clustering.

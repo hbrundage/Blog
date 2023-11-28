@@ -1,0 +1,8 @@
+---
+title: "Anomaly and Outlier Detection"
+author: "Hayden Brundage"
+date: "2023-11-24"
+categories: [news]
+---
+
+This post covers the concepts of anomaly and outlier detection.
