@@ -2,16 +2,16 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "MLBlog",
+    "title": "Machine Learning Blog",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 27, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Probability Theory and Random Variables\n\n\nRandomness and Why You Care\n\n\n\n\ncode\n\n\nmachine learning\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly and Outlier Detection\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nClassification\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nLinear and Nonlinear Regression\n\n\n\n\n\n\n\ncode\n\n\nmachine learning\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nHayden Brundage\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "title": "Probability Theory and Random Variables",
     "section": "",
-    "text": "This is a post with executable code."
+    "text": "This post covers the general"
   },
   {
     "objectID": "about.html",
@@ -26,5 +26,61 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/Linear and Nonlinear Regression/index.html",
+    "href": "posts/Linear and Nonlinear Regression/index.html",
+    "title": "Linear and Nonlinear Regression",
+    "section": "",
+    "text": "This post covers the concepts of linear and nonlinear regression."
+  },
+  {
+    "objectID": "posts/Clustering/index.html",
+    "href": "posts/Clustering/index.html",
+    "title": "Clustering",
+    "section": "",
+    "text": "This post covers the concept of clustering."
+  },
+  {
+    "objectID": "posts/Classification/index.html",
+    "href": "posts/Classification/index.html",
+    "title": "Classification",
+    "section": "",
+    "text": "This post covers the concept of classification."
+  },
+  {
+    "objectID": "posts/Anomaly and Outlier Detection/index.html",
+    "href": "posts/Anomaly and Outlier Detection/index.html",
+    "title": "Anomaly and Outlier Detection",
+    "section": "",
+    "text": "This post covers the concepts of anomaly and outlier detection."
+  },
+  {
+    "objectID": "posts/Probability Theory and Random Variables/index.html",
+    "href": "posts/Probability Theory and Random Variables/index.html",
+    "title": "Probability Theory and Random Variables",
+    "section": "",
+    "text": "A Continuous Probability Distribution"
+  },
+  {
+    "objectID": "posts/Probability Theory and Random Variables/index.html#this-post-covers-the-general",
+    "href": "posts/Probability Theory and Random Variables/index.html#this-post-covers-the-general",
+    "title": "Probability Theory and Random Variables",
+    "section": "This post covers the general",
+    "text": "This post covers the general"
+  },
+  {
+    "objectID": "posts/Probability Theory and Random Variables/index.html#introduction",
+    "href": "posts/Probability Theory and Random Variables/index.html#introduction",
+    "title": "Probability Theory and Random Variables",
+    "section": "Introduction",
+    "text": "Introduction\nUnderstanding probability and statistics is, whether graduate students like it or not, essential to the study of machine learning and artificial intelligence. These fields are inextricably linked and any aspiring AI researcher or data scientist should seek to have a strong foundation in the former two. Computers, and the various algorithms we have developed on them, operate on data, which is a fairly ambiguous term here. Data is, in short, a quantity or collection of different values which may exist discretely or continuously. As computers have become exceedingly fast and able to store seemingly endless amounts of information, the absolute volume of data in our world is immense. Data can be as simple as a number or as complex as images and videos. Data may also be intentionally (or unintentionally) generated in a poor manner and as such may not be indicative of anything. As such, any subset of the general data that exists, may not necessarily reflect reality. For example, a misleading dataset might cause one to come to the wrong conclusions about, say, climate change, whereas if you looked at a larger, more inclusive collection of data, a different conclusion may be reached (to be diplomatic, I will not disclose which is which here).\nStatisticians and probability theorists have over the centuries developed methods for assessing the quality of and producing data. The work of these great men and women has laid the groundwork for the wonderful fields of probability and statistics. Interacting with data requires that we, as computer scientists, have an understanding of what makes data reliable or “good” in some quality. To be able to accurately assess data and develop intelligent machines to process and reveal further insights from it, it is crucial to study the fields of probability and statistics. In this post, I will cover several fundamental concepts in the space of probability theory with an emphasis on their relation to machine learning. I assume my readers have some familiarity with probability theory in general and much of the this post will be review."
+  },
+  {
+    "objectID": "posts/Probability Theory and Random Variables/index.html#probability-and-statistics",
+    "href": "posts/Probability Theory and Random Variables/index.html#probability-and-statistics",
+    "title": "Probability Theory and Random Variables",
+    "section": "Probability and Statistics",
+    "text": "Probability and Statistics\nProbability is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. Let us begin with a simple example: flipping a coin. The following code simulates 10 coin flips and plots their output:\n\n\nCode\nimport random\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef flipCoin():\n    coinFlip = random.randint(0, 1)\n    if (coinFlip == 0):\n        return \"heads\"\n    else:\n        return \"tails\"\n\nmaxFlips = 10\ndeltaList = []\nrecordList = []\nnumHeads = 0\nnumTails = 0\nnumFlips = 0\n\nfor i in range(maxFlips):\n    recordList.append(flipCoin())\n    if recordList[i] == \"heads\":\n        numHeads += 1\n    else:\n        numTails += 1\n    numFlips += 1\n    deltaList.append((numHeads - numTails) / numFlips)\n\nplt.plot(deltaList)\nplt.grid()\nplt.axis([1, maxFlips - 1, -1, 1])\nplt.xticks(np.arange(len(deltaList)), np.arange(1, len(deltaList) + 1))\nplt.xlabel(\"Number of Coin Flips\")\nplt.ylabel(\"Propotion of Flips [(Heads - Tails) / Number of Flips]\")\nplt.show()\n\n\n\n\n\nFigure 1: Results from 10 Coin Flips\n\n\n\n\nIt should be obvious that the probability of a coin flip will result in heads is equal to the probability of it being tails. After the first few flips, the above plot should show a trend toward"
   }
 ]
