@@ -21,10 +21,10 @@ Understanding probability and statistics is, whether graduate students like it o
 Statisticians and probability theorists have over the centuries developed methods for assessing the quality of and producing data. The work of these great men and women has laid the groundwork for the wonderful fields of probability and statistics. Interacting with data requires that we, as computer scientists, have an understanding of what makes data reliable or "good" in some quality. To be able to accurately assess data and develop intelligent machines to process and reveal further insights from it, it is crucial to study the fields of probability and statistics. In this post, I will cover several fundamental concepts in the space of probability theory with an emphasis on their relation to machine learning. I assume my readers have some familiarity with probability theory in general and much of the this post will be review. 
 
 ## Probability and Statistics
-Probability is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. Let us begin with a simple example: flipping a coin. The following code simulates 10 coin flips and plots their output:
+*Probability* is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. *Statistics* is a broader concept than probability theory because it involves more than just mathematics. Often, the discipline of statistics also incorporates things such as the collection, presentation, and organization of data. For the sake of brevity, I will discuss primarily the mathematical side of statistics - the analysis and interpretation of data. Some important applications of mathematical statisticas are descriptive analysis (like determining means, medians, and modes) and the generation of statistical models (which leads to inferential statistics - a core concept in machine learning). Let us begin with a simple example: flipping a coin. While you could argue flipping a coin is dependent on how one flips it, if the coin is tampered with, or fate, let us assume it is a perfect, idealized coin that has an entirely random outcome. We expect half the time to see heads as the outcome and the other half we would tails. The following Python code simulates 10 (idealized) coin flips and plots their results:
 
 ```{python}
-#| label: "fig-coins"
+#| label: "fig-coins-ten"
 #| fig-cap: "Results from 10 Coin Flips"
 
 import random
@@ -59,8 +59,69 @@ plt.grid()
 plt.axis([1, maxFlips - 1, -1, 1])
 plt.xticks(np.arange(len(deltaList)), np.arange(1, len(deltaList) + 1))
 plt.xlabel("Number of Coin Flips")
-plt.ylabel("Propotion of Flips [(Heads - Tails) / Number of Flips]")
+plt.ylabel("Normalized Difference [(Heads - Tails) / Number of Flips]")
 plt.show()
 ```
 
-It should be obvious that the probability of a coin flip will result in heads is equal to the probability of it being tails. After the first few flips, the above plot should show a trend toward
+The y-axis of the graph above shows the difference between the number of heads outcomes and the number of tails outcomes normalized by the total number of flips. This gives a relative measure of how skewed the current proportion of outcomes is relative to the expected 50-50 outcome. I encourage you to try running this code in your own Jupyter environment several times. If run multiple times, the above code will not repeatedly show 0.00 by the final flip, though you may notice a general tendency for the y-value of the plot to tend toward 0.00. As we increase the number of coin flips, this trend becomes much more apparent:
+
+```{python}
+#| label: "fig-coins-thousand"
+#| fig-cap: "Results from 1000 Coin Flips"
+
+import random
+import numpy as np
+import matplotlib.pyplot as plt
+
+def flipCoin():
+    coinFlip = random.randint(0, 1)
+    if (coinFlip == 0):
+        return "heads"
+    else:
+        return "tails"
+
+maxFlips = 1000
+deltaList = []
+recordList = []
+numHeads = 0
+numTails = 0
+numFlips = 0
+
+for i in range(maxFlips):
+    recordList.append(flipCoin())
+    if recordList[i] == "heads":
+        numHeads += 1
+    else:
+        numTails += 1
+    numFlips += 1
+    deltaList.append((numHeads - numTails) / numFlips)
+
+plt.plot(deltaList)
+plt.axis([1, maxFlips - 1, -1, 1])
+plt.xticks(plt.xticks()[0][1::1])
+plt.xlabel("Number of Coin Flips")
+plt.ylabel("Normalized Difference [(Heads - Tails) / Number of Flips]")
+plt.show()
+```
+
+If you run the provided code multiple times, it is exceedingly apparent that with more coin flips, the normalized difference between the number of heads outcomes and tails outcomes trends toward 0.00. If a coin is flipped just 10 times, even a single flip difference seems significant. As the number of flips increases, however, we see that the effect of randomness seen in the outcome diminishes. The effect seen on the y-axis of the above graphs roughly correlates to the following:
+
+$$
+X(c) = \begin{cases}
+            \phantom{-}1, & \text{if c = heads} \\
+            -1, & \text{if c = tails} \\
+        \end{cases}
+$$
+
+The variable $X$ introduced in the above equation is called a *random variable*. A random variable is essentially a quantity that is dependant on a random event. In this case, the random event that the variable $X$ depends on is the coin flip. To be more specific, $X$ is a *discrete random variable*. Discrete random variables are random variables that may take on one of a finite or countably infinite set of values. There is a "distance" between a value and its nearest neighbor and that distance is nonzero. This contrasts with what are known as *continuous random variables*, which may take on any single value from an uncountable set.
+
+Since a coin flip result is a discrete random variable, we can assign a probability to each outcome of a coin flip. There is a 50% chance that a flip lands on heads, and a 50% chance that it lands on tails. We would say then that:
+
+$$
+p(heads) = \frac{1}{2} \hspace{3mm} \text{and} \hspace{3mm} p(tails) = \frac{1}{2}
+$$
+
+Notice that the probabilities of each of the above events happening sum to 1. For any finite set of possible events, the individual probabilities of each event occurring have a sum of 1. This makes intuitive sense: if an event can happen, there is some quantifiable chance of it occurring, and if an event cannot happen, its probability is 0! In the example of the coin flip, the equal likelihood of heads and tails occurring is what is ultimately responsible for the damping behavior of @fig-coins-thousand.
+
+## Probability, Statistics, and Machine Learning
+Probability and statistics are in and of themselves immensely complex and widely practiced disciplines with people who devote their lives to their study. Machine learning, as a discipline, seeks to apply the above principles (and many more) to computers such that they may be able to learn from data. As I hinted at earlier, inferential statistics has a large application area in machine learning, where computer algorithms are used to determine predictive patters from relatively small sample sizes and use this to infer information about the population (or dataset) that the sample was taken from. This 

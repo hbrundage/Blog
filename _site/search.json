@@ -1,73 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Machine Learning Blog",
-    "section": "",
-    "text": "Probability Theory and Random Variables\n\n\nRandomness and Why You Care\n\n\n\n\ncode\n\n\nmachine learning\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly and Outlier Detection\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nClassification\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nLinear and Nonlinear Regression\n\n\n\n\n\n\n\ncode\n\n\nmachine learning\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nHayden Brundage\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Probability Theory and Random Variables",
-    "section": "",
-    "text": "This post covers the general"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this blog"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "posts/Linear and Nonlinear Regression/index.html",
-    "href": "posts/Linear and Nonlinear Regression/index.html",
-    "title": "Linear and Nonlinear Regression",
-    "section": "",
-    "text": "This post covers the concepts of linear and nonlinear regression."
-  },
-  {
-    "objectID": "posts/Clustering/index.html",
-    "href": "posts/Clustering/index.html",
-    "title": "Clustering",
-    "section": "",
-    "text": "This post covers the concept of clustering."
-  },
-  {
-    "objectID": "posts/Classification/index.html",
-    "href": "posts/Classification/index.html",
-    "title": "Classification",
-    "section": "",
-    "text": "This post covers the concept of classification."
-  },
-  {
-    "objectID": "posts/Anomaly and Outlier Detection/index.html",
-    "href": "posts/Anomaly and Outlier Detection/index.html",
-    "title": "Anomaly and Outlier Detection",
-    "section": "",
-    "text": "This post covers the concepts of anomaly and outlier detection."
-  },
-  {
     "objectID": "posts/Probability Theory and Random Variables/index.html",
     "href": "posts/Probability Theory and Random Variables/index.html",
     "title": "Probability Theory and Random Variables",
     "section": "",
     "text": "A Continuous Probability Distribution"
-  },
-  {
-    "objectID": "posts/Probability Theory and Random Variables/index.html#this-post-covers-the-general",
-    "href": "posts/Probability Theory and Random Variables/index.html#this-post-covers-the-general",
-    "title": "Probability Theory and Random Variables",
-    "section": "This post covers the general",
-    "text": "This post covers the general"
   },
   {
     "objectID": "posts/Probability Theory and Random Variables/index.html#introduction",
@@ -81,6 +18,55 @@
     "href": "posts/Probability Theory and Random Variables/index.html#probability-and-statistics",
     "title": "Probability Theory and Random Variables",
     "section": "Probability and Statistics",
-    "text": "Probability and Statistics\nProbability is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. Let us begin with a simple example: flipping a coin. The following code simulates 10 coin flips and plots their output:\n\n\nCode\nimport random\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef flipCoin():\n    coinFlip = random.randint(0, 1)\n    if (coinFlip == 0):\n        return \"heads\"\n    else:\n        return \"tails\"\n\nmaxFlips = 10\ndeltaList = []\nrecordList = []\nnumHeads = 0\nnumTails = 0\nnumFlips = 0\n\nfor i in range(maxFlips):\n    recordList.append(flipCoin())\n    if recordList[i] == \"heads\":\n        numHeads += 1\n    else:\n        numTails += 1\n    numFlips += 1\n    deltaList.append((numHeads - numTails) / numFlips)\n\nplt.plot(deltaList)\nplt.grid()\nplt.axis([1, maxFlips - 1, -1, 1])\nplt.xticks(np.arange(len(deltaList)), np.arange(1, len(deltaList) + 1))\nplt.xlabel(\"Number of Coin Flips\")\nplt.ylabel(\"Propotion of Flips [(Heads - Tails) / Number of Flips]\")\nplt.show()\n\n\n\n\n\nFigure 1: Results from 10 Coin Flips\n\n\n\n\nIt should be obvious that the probability of a coin flip will result in heads is equal to the probability of it being tails. After the first few flips, the above plot should show a trend toward"
+    "text": "Probability and Statistics\nProbability is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. Statistics is a broader concept than probability theory because it involves more than just mathematics. Often, the discipline of statistics also incorporates things such as the collection, presentation, and organization of data. For the sake of brevity, I will discuss primarily the mathematical side of statistics - the analysis and interpretation of data. Some important applications of mathematical statisticas are descriptive analysis (like determining means, medians, and modes) and the generation of statistical models (which leads to inferential statistics - a core concept in machine learning). Let us begin with a simple example: flipping a coin. While you could argue flipping a coin is dependent on how one flips it, if the coin is tampered with, or fate, let us assume it is a perfect, idealized coin that has an entirely random outcome. We expect half the time to see heads as the outcome and the other half we would tails. The following Python code simulates 10 (idealized) coin flips and plots their results:\n\n\nCode\nimport random\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef flipCoin():\n    coinFlip = random.randint(0, 1)\n    if (coinFlip == 0):\n        return \"heads\"\n    else:\n        return \"tails\"\n\nmaxFlips = 10\ndeltaList = []\nrecordList = []\nnumHeads = 0\nnumTails = 0\nnumFlips = 0\n\nfor i in range(maxFlips):\n    recordList.append(flipCoin())\n    if recordList[i] == \"heads\":\n        numHeads += 1\n    else:\n        numTails += 1\n    numFlips += 1\n    deltaList.append((numHeads - numTails) / numFlips)\n\nplt.plot(deltaList)\nplt.grid()\nplt.axis([1, maxFlips - 1, -1, 1])\nplt.xticks(np.arange(len(deltaList)), np.arange(1, len(deltaList) + 1))\nplt.xlabel(\"Number of Coin Flips\")\nplt.ylabel(\"Normalized Difference [(Heads - Tails) / Number of Flips]\")\nplt.show()\n\n\n\n\n\nFigure 1: Results from 10 Coin Flips\n\n\n\n\nThe y-axis of the graph above shows the difference between the number of heads outcomes and the number of tails outcomes normalized by the total number of flips. This gives a relative measure of how skewed the current proportion of outcomes is relative to the expected 50-50 outcome. I encourage you to try running this code in your own Jupyter environment several times. If run multiple times, the above code will not repeatedly show 0.00 by the final flip, though you may notice a general tendency for the y-value of the plot to tend toward 0.00. As we increase the number of coin flips, this trend becomes much more apparent:\n\n\nCode\nimport random\nimport numpy as np\nimport matplotlib.pyplot as plt\n\ndef flipCoin():\n    coinFlip = random.randint(0, 1)\n    if (coinFlip == 0):\n        return \"heads\"\n    else:\n        return \"tails\"\n\nmaxFlips = 1000\ndeltaList = []\nrecordList = []\nnumHeads = 0\nnumTails = 0\nnumFlips = 0\n\nfor i in range(maxFlips):\n    recordList.append(flipCoin())\n    if recordList[i] == \"heads\":\n        numHeads += 1\n    else:\n        numTails += 1\n    numFlips += 1\n    deltaList.append((numHeads - numTails) / numFlips)\n\nplt.plot(deltaList)\nplt.axis([1, maxFlips - 1, -1, 1])\nplt.xticks(plt.xticks()[0][1::1])\nplt.xlabel(\"Number of Coin Flips\")\nplt.ylabel(\"Normalized Difference [(Heads - Tails) / Number of Flips]\")\nplt.show()\n\n\n\n\n\nFigure 2: Results from 1000 Coin Flips\n\n\n\n\nIf you run the provided code multiple times, it is exceedingly apparent that with more coin flips, the normalized difference between the number of heads outcomes and tails outcomes trends toward 0.00. If a coin is flipped just 10 times, even a single flip difference seems significant. As the number of flips increases, however, we see that the effect of randomness seen in the outcome diminishes. The effect seen on the y-axis of the above graphs roughly correlates to the following:\n\\[\nX(c) = \\begin{cases}\n            \\phantom{-}1, & \\text{if c = heads} \\\\\n            -1, & \\text{if c = tails} \\\\\n        \\end{cases}\n\\]\nThe variable \\(X\\) introduced in the above equation is called a random variable. A random variable is essentially a quantity that is dependant on a random event. In this case, the random event that the variable \\(X\\) depends on is the coin flip. To be more specific, \\(X\\) is a discrete random variable. Discrete random variables are random variables that may take on one of a finite or countably infinite set of values. There is a “distance” between a value and its nearest neighbor and that distance is nonzero. This contrasts with what are known as continuous random variables, which may take on any single value from an uncountable set.\nSince a coin flip result is a discrete random variable, we can assign a probability to each outcome of a coin flip. There is a 50% chance that a flip lands on heads, and a 50% chance that it lands on tails. We would say then that:\n\\[\np(heads) = \\frac{1}{2} \\hspace{3mm} \\text{and} \\hspace{3mm} p(tails) = \\frac{1}{2}\n\\]\nNotice that the probabilities of each of the above events happening sum to 1. For any finite set of possible events, the individual probabilities of each event occurring have a sum of 1. This makes intuitive sense: if an event can happen, there is some quantifiable chance of it occurring, and if an event cannot happen, its probability is 0! In the example of the coin flip, the equal likelihood of heads and tails occurring is what is ultimately responsible for the damping behavior of Figure 2."
+  },
+  {
+    "objectID": "posts/Clustering/index.html",
+    "href": "posts/Clustering/index.html",
+    "title": "Clustering",
+    "section": "",
+    "text": "This post covers the concept of clustering."
+  },
+  {
+    "objectID": "posts/Anomaly and Outlier Detection/index.html",
+    "href": "posts/Anomaly and Outlier Detection/index.html",
+    "title": "Anomaly and Outlier Detection",
+    "section": "",
+    "text": "This post covers the concepts of anomaly and outlier detection."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Machine Learning Blog",
+    "section": "",
+    "text": "Probability Theory and Random Variables\n\n\nRandomness and Why You Care\n\n\n\n\ncode\n\n\nmachine learning\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 1, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nAnomaly and Outlier Detection\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nClassification\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nClustering\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 24, 2023\n\n\nHayden Brundage\n\n\n\n\n\n\n  \n\n\n\n\nLinear and Nonlinear Regression\n\n\n\n\n\n\n\ncode\n\n\nmachine learning\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nHayden Brundage\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Classification/index.html",
+    "href": "posts/Classification/index.html",
+    "title": "Classification",
+    "section": "",
+    "text": "This post covers the concept of classification."
+  },
+  {
+    "objectID": "posts/Linear and Nonlinear Regression/index.html",
+    "href": "posts/Linear and Nonlinear Regression/index.html",
+    "title": "Linear and Nonlinear Regression",
+    "section": "",
+    "text": "This post covers the concepts of linear and nonlinear regression."
+  },
+  {
+    "objectID": "posts/Probability Theory and Random Variables/index.html#probability-statistics-and-machine-learning",
+    "href": "posts/Probability Theory and Random Variables/index.html#probability-statistics-and-machine-learning",
+    "title": "Probability Theory and Random Variables",
+    "section": "Probability, Statistics, and Machine Learning",
+    "text": "Probability, Statistics, and Machine Learning\nProbability and statistics are in and of themselves immensely complex and widely practiced disciplines with people who devote their lives to their study. Machine learning, as a discipline, seeks to apply the above principles (and many more) to computers such that they may be able to learn from data. As I hinted at earlier, inferential statistics has a large application area in machine learning, where computer algorithms are used to determine predictive patters from relatively small sample sizes and use this to infer information about the population (or dataset) that the sample was taken from. This"
   }
 ]

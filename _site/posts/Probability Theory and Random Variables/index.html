@@ -96,6 +96,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -196,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="probability-and-statistics" class="level2">
 <h2 class="anchored" data-anchor-id="probability-and-statistics">Probability and Statistics</h2>
-<p>Probability is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. Let us begin with a simple example: flipping a coin. The following code simulates 10 coin flips and plots their output:</p>
+<p><em>Probability</em> is, put simply, the branch of mathematics concerning itself with randomness and its applications in determining the likelihood of events. If you study a technical field, you have likely taken classes or independently learned many concepts within probability theory. <em>Statistics</em> is a broader concept than probability theory because it involves more than just mathematics. Often, the discipline of statistics also incorporates things such as the collection, presentation, and organization of data. For the sake of brevity, I will discuss primarily the mathematical side of statistics - the analysis and interpretation of data. Some important applications of mathematical statisticas are descriptive analysis (like determining means, medians, and modes) and the generation of statistical models (which leads to inferential statistics - a core concept in machine learning). Let us begin with a simple example: flipping a coin. While you could argue flipping a coin is dependent on how one flips it, if the coin is tampered with, or fate, let us assume it is a perfect, idealized coin that has an entirely random outcome. We expect half the time to see heads as the outcome and the other half we would tails. The following Python code simulates 10 (idealized) coin flips and plots their results:</p>
 <div class="cell" data-execution_count="1">
 <details>
 <summary>Code</summary>
@@ -232,19 +234,82 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>plt.axis([<span class="dv">1</span>, maxFlips <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>])</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>plt.xticks(np.arange(<span class="bu">len</span>(deltaList)), np.arange(<span class="dv">1</span>, <span class="bu">len</span>(deltaList) <span class="op">+</span> <span class="dv">1</span>))</span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Coin Flips"</span>)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Propotion of Flips [(Heads - Tails) / Number of Flips]"</span>)</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Normalized Difference [(Heads - Tails) / Number of Flips]"</span>)</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<div id="fig-coins" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-coins-ten" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
-<p><img src="index_files/figure-html/fig-coins-output-1.png" width="617" height="434" class="figure-img"></p>
+<p><img src="index_files/figure-html/fig-coins-ten-output-1.png" width="617" height="434" class="figure-img"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Results from 10 Coin Flips</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>It should be obvious that the probability of a coin flip will result in heads is equal to the probability of it being tails. After the first few flips, the above plot should show a trend toward</p>
+<p>The y-axis of the graph above shows the difference between the number of heads outcomes and the number of tails outcomes normalized by the total number of flips. This gives a relative measure of how skewed the current proportion of outcomes is relative to the expected 50-50 outcome. I encourage you to try running this code in your own Jupyter environment several times. If run multiple times, the above code will not repeatedly show 0.00 by the final flip, though you may notice a general tendency for the y-value of the plot to tend toward 0.00. As we increase the number of coin flips, this trend becomes much more apparent:</p>
+<div class="cell" data-execution_count="2">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> flipCoin():</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    coinFlip <span class="op">=</span> random.randint(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (coinFlip <span class="op">==</span> <span class="dv">0</span>):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"heads"</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"tails"</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>maxFlips <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>deltaList <span class="op">=</span> []</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>recordList <span class="op">=</span> []</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>numHeads <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>numTails <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>numFlips <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(maxFlips):</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    recordList.append(flipCoin())</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> recordList[i] <span class="op">==</span> <span class="st">"heads"</span>:</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        numHeads <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        numTails <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    numFlips <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    deltaList.append((numHeads <span class="op">-</span> numTails) <span class="op">/</span> numFlips)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>plt.plot(deltaList)</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>plt.axis([<span class="dv">1</span>, maxFlips <span class="op">-</span> <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>])</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>plt.xticks(plt.xticks()[<span class="dv">0</span>][<span class="dv">1</span>::<span class="dv">1</span>])</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Number of Coin Flips"</span>)</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Normalized Difference [(Heads - Tails) / Number of Flips]"</span>)</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-coins-thousand" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="index_files/figure-html/fig-coins-thousand-output-1.png" width="625" height="434" class="figure-img"></p>
+<figcaption class="figure-caption">Figure&nbsp;2: Results from 1000 Coin Flips</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>If you run the provided code multiple times, it is exceedingly apparent that with more coin flips, the normalized difference between the number of heads outcomes and tails outcomes trends toward 0.00. If a coin is flipped just 10 times, even a single flip difference seems significant. As the number of flips increases, however, we see that the effect of randomness seen in the outcome diminishes. The effect seen on the y-axis of the above graphs roughly correlates to the following:</p>
+<p><span class="math display">\[
+X(c) = \begin{cases}
+            \phantom{-}1, &amp; \text{if c = heads} \\
+            -1, &amp; \text{if c = tails} \\
+        \end{cases}
+\]</span></p>
+<p>The variable <span class="math inline">\(X\)</span> introduced in the above equation is called a <em>random variable</em>. A random variable is essentially a quantity that is dependant on a random event. In this case, the random event that the variable <span class="math inline">\(X\)</span> depends on is the coin flip. To be more specific, <span class="math inline">\(X\)</span> is a <em>discrete random variable</em>. Discrete random variables are random variables that may take on one of a finite or countably infinite set of values. There is a “distance” between a value and its nearest neighbor and that distance is nonzero. This contrasts with what are known as <em>continuous random variables</em>, which may take on any single value from an uncountable set.</p>
+<p>Since a coin flip result is a discrete random variable, we can assign a probability to each outcome of a coin flip. There is a 50% chance that a flip lands on heads, and a 50% chance that it lands on tails. We would say then that:</p>
+<p><span class="math display">\[
+p(heads) = \frac{1}{2} \hspace{3mm} \text{and} \hspace{3mm} p(tails) = \frac{1}{2}
+\]</span></p>
+<p>Notice that the probabilities of each of the above events happening sum to 1. For any finite set of possible events, the individual probabilities of each event occurring have a sum of 1. This makes intuitive sense: if an event can happen, there is some quantifiable chance of it occurring, and if an event cannot happen, its probability is 0! In the example of the coin flip, the equal likelihood of heads and tails occurring is what is ultimately responsible for the damping behavior of <a href="#fig-coins-thousand">Figure&nbsp;2</a>.</p>
+</section>
+<section id="probability-statistics-and-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="probability-statistics-and-machine-learning">Probability, Statistics, and Machine Learning</h2>
+<p>Probability and statistics are in and of themselves immensely complex and widely practiced disciplines with people who devote their lives to their study. Machine learning, as a discipline, seeks to apply the above principles (and many more) to computers such that they may be able to learn from data. As I hinted at earlier, inferential statistics has a large application area in machine learning, where computer algorithms are used to determine predictive patters from relatively small sample sizes and use this to infer information about the population (or dataset) that the sample was taken from. This</p>
 
 
 </section>
